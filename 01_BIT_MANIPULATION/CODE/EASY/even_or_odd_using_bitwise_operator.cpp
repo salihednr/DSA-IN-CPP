@@ -1,3 +1,7 @@
+/*
+Concept:-
+Last Bit Of Odd Numbers Is 1 So & Operator With 1 Will Give Result Of 1
+*/
 #include<iostream>
 using namespace std;
 int main()
