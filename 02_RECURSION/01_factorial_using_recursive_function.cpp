@@ -1,3 +1,7 @@
+/*
+Easy Problem
+5!=120
+*/
 #include<iostream>
 using namespace std;
 int fact(int n)
