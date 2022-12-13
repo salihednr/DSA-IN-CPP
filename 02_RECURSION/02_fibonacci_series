@@ -1,0 +1,29 @@
+/*
+Fibonacci Series
+0 1 1 2 3 5 8 13 21
+
+Printing
+
+1 1 2 3 5 8 13 21
+Starts With 0th index
+
+Better Understanding How Does Fibonacci Series Works In Recursion
+https://www.youtube.com/watch?v=dxyYP3BSdcQ
+*/
+#include<iostream>
+using namespace std;
+int fibonacci(int n)
+{
+    if(n==0)
+        return 0;
+    if(n==1)
+        return 1;
+    return fibonacci(n-1)+fibonacci(n-2);
+}
+int main()
+{
+    int n;
+    cin>>n;
+    cout<<fibonacci(n); //if we want starts with 1 just make fibonacci(n-1)
+    return 0;
+}
