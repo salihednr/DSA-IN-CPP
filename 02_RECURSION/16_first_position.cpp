@@ -27,10 +27,5 @@ int main()
     int n=sizeof(ar)/sizeof(int);
     cout<<n-findIndex(ar,n,1)<<endl;
     cout<<findIndex2(ar,n,1,0)<<endl;
-    int k=findIndex3(ar,n,3);
-    if(k==-1)
-        cout<<"No Element"<<endl;
-    else
-        cout<<k<<endl;
     return 0;
 }
