@@ -1,8 +1,15 @@
 /*
 Selection Sort Algorithm
-Time Complexity = O(n^2) For Best,Average,Worst Case
-So This Sorting Algorithm Is Not Efficient For Large Set Of Datas
 In-Place Comparison Sort
+
+Time Complexity: 
+Best Case: O(1)
+Worst Case: O(n)
+Average Case: O(n)
+
+Space Complexity:
+O(1)
+So This Sorting Algorithm Is Not At All Efficient For Large Set Of Datas.
 */
 #include<iostream>
 using namespace std;
