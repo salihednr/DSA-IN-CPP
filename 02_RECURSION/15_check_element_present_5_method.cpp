@@ -6,7 +6,7 @@ int searchElement(int ar[],int n,int key,int i){
         return -1;
     int s=searchElement(ar,n,key,i+1);
     if(ar[i]==key)
-        return s+i+1;
+        return s+i+1;   //To Cancel Returned -1 we add s(-1)+1 which becomes zero so we can return i
     else
         return s;
 }
