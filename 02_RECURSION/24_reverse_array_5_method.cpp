@@ -24,6 +24,22 @@ void reverseArray3(int ar[],int n,int i=0){
     reverseArray3(ar,n,i+1);
     swap(ar[i],ar[n-i-1]);
 }
+//Left To Right
+void printreverseArray4(int ar[],int n){
+    if(n<0)
+        return;
+    cout<<ar[n]<<" ";
+    n--;
+    printreverseArray4(ar,n); //printreverseArray4(ar,--n) else segmentation fault may appear
+}
+//Right To Left
+void printreverseArray5(int ar[],int n,int i=0){
+    if(n==i)
+        return;
+    printreverseArray5(ar,n,i+1);
+    cout<<ar[i]<<" ";
+
+}
 int main()
 {
     int ar[]={1,2,3,4,5,6};
@@ -44,5 +60,10 @@ int main()
     for(int i=0;i<n;i++)
         cout<<ar[i]<<" ";
     cout<<endl;
+    cout<<"Array After Reversing:"<<endl;
+    printreverseArray4(ar,n-1);
+    cout<<endl;
+    cout<<"Array After Reversing:"<<endl;
+    printreverseArray5(ar,n);
     return 0;
 }
