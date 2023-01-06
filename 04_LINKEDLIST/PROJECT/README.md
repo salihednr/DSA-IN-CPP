@@ -1,4 +1,5 @@
 <h1>Linked List Project<h1>
+<div>
   <ol>
     <li>Append Node</li>
     <li>Prepand Node</li>
@@ -8,3 +9,4 @@
     <li>Print</li>
     <li>Clear Screen</li>
   </ol>
+ </div>
