@@ -1,6 +1,6 @@
 /*
 Note:
-Array Size Size Is Fixed In This Program
+Static Stack
 Stack Is A Linear Data Structure
 Stack Follows LIFO (Last In First Out)
 Stack Is ADT (Abstract Data Structur) : Follows Particular Order
