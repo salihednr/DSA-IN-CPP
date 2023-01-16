@@ -26,7 +26,7 @@ class stack{
         arr=new int[capacity];
         nextIndex=0;
     }
-    //Modified Constructor
+    //Parametrized Constructor
     stack(int cap){
         capacity=cap;
         arr = new int[capacity];
