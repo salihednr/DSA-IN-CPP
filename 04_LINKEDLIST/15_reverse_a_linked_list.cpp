@@ -1,12 +1,5 @@
 /*
-Slow And Fast Pointer Approach
-Uses To Find Middle Element
-Slow Pointer Moves One Step Each Time
-Fast Pointer Moves Two Step Each Time
-When Fast Pointer Hits NULL Slow Pointer Will Be Middle Element
-When There Are Even Element Second Element Will Be Middle Element
-1 2 3 4 5 6
-Middle Element: 4
+Reverse Linked List
 */
 #include<iostream>
 using namespace std;
