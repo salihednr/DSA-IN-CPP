@@ -86,6 +86,37 @@ bool searchElement(Nodes *head,int key){
         return true;
     return searchElement(head->next,key);
 }
+//Insert Element In Linked List Linearly
+Nodes *insertElement(int pos,Nodes *head,Nodes *temp){
+    if(pos<0)
+        return head;
+    else{
+        //Insert In First Position
+        if(pos==0){
+            temp->next=head;
+            head=temp;        
+        }
+        //Insert In Between
+        else{
+            Nodes *p=head;
+            for(int i=0;i<pos-1;i++){
+                p=p->next;    
+            }
+            temp->next=p->next;
+            p->next=temp;
+        }
+    }
+    return head;
+}
+//Delete Nodes
+Nodes *deleteNode(int pos,Nodes *head){
+    Nodes *p=head;
+    for(int i=0;i<pos-1;i++){
+        p=p->next;    
+    }
+    p->next=p->next->next;
+    return head;
+}
 int main(){
     //Creating Linked List
     Nodes *n1=new Nodes(10);
@@ -113,5 +144,20 @@ int main(){
         cout<<"Element Found"<<endl;
     else
         cout<<"Element Not Found"<<endl;
+    //Insert Beginning
+    Nodes *temp=new Nodes(11);
+    head=insertElement(0,head,temp);
+    display(head);
+    //Insert In Between
+    Nodes *temp2=new Nodes(22);
+    head=insertElement(1,head,temp2);
+    display(head);
+    //Insert At End
+    Nodes *temp3=new Nodes(3333);
+    head=insertElement(6,head,temp3);
+    display(head);
+    //Delet Node
+    head=deleteNode(0,head);
+    display(head);
     return 0;
 }
