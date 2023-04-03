@@ -111,19 +111,77 @@ Nodes *insertElement(int pos,Nodes *head,Nodes *temp){
 //Delete Nodes
 Nodes *deleteNode(int pos,Nodes *head){
     Nodes *p=head;
+    if(pos==0)
+        return head->next;
     for(int i=0;i<pos-1;i++){
         p=p->next;    
     }
     p->next=p->next->next;
     return head;
 }
+//Merge Two Sorted Linked List (Linearly)
+Nodes *mergeTwoLinkedList(Nodes *l1,Nodes *l2){
+    Nodes *finalHead=NULL;
+    Nodes *tail=NULL;
+    if(l1==NULL)
+        return l2;
+    if(l2==NULL)
+        return l1;
+    if((l1->data)>(l2->data))
+    {
+        finalHead=l2;
+        l2=l2->next;
+    }
+    else
+    {
+        finalHead=l1;
+        l1=l1->next;
+    }
+    tail=finalHead;
+    while(l1!=NULL && l2!=NULL){
+        if((l1->data)<(l2->data)){
+            tail->next=l1;
+            l1=l1->next;
+            tail=tail->next;
+        }
+        else
+        {
+            tail->next=l2;
+            l2=l2->next;
+            tail=tail->next;
+        }
+    }
+    if(l1==NULL)
+        tail->next=l2;
+    if(l2==NULL)
+        tail->next=l1;
+    return finalHead;
+}
+//Merge Two Sorted Linked List Recursively
+Nodes *mergeTwoLinkedListRec(Nodes *l1,Nodes *l2){
+    if(l1==NULL)
+        return l2;
+    if(l2==NULL)
+        return l1;
+    Nodes *newHead=NULL;
+    if(l1->data > l2->data){
+        newHead=l2;
+        newHead->next=mergeTwoLinkedListRec(l1,l2->next);
+    }
+    else
+    {
+        newHead=l1;
+        l1->next=mergeTwoLinkedListRec(l1->next,l2);
+    }
+    return newHead;
+}
 int main(){
-    //Creating Linked List
-    Nodes *n1=new Nodes(10);
+    //Creating First Linked List
+    Nodes *n1=new Nodes(11);
     Nodes *head=n1;
     Nodes *n2=new Nodes(20);
     n1->next=n2;
-    Nodes *n3=new Nodes(300);
+    Nodes *n3=new Nodes(31);
     n2->next=n3;
     Nodes *n4=new Nodes(40);
     n3->next=n4;
@@ -150,14 +208,31 @@ int main(){
     display(head);
     //Insert In Between
     Nodes *temp2=new Nodes(22);
-    head=insertElement(1,head,temp2);
+    head=insertElement(3,head,temp2);
     display(head);
     //Insert At End
     Nodes *temp3=new Nodes(3333);
     head=insertElement(6,head,temp3);
     display(head);
-    //Delet Node
+    //Delete Node
     head=deleteNode(0,head);
     display(head);
+    //Second Linked List
+    Nodes *m1=new Nodes(10);
+    Nodes *m2=new Nodes(20);
+    Nodes *m3=new Nodes(21);
+    Nodes *m4=new Nodes(26);
+    m1->next=m2;
+    m2->next=m3;
+    m3->next=m4;
+    Nodes *headl2=m1;
+    //Two Linked List Are Sorted
+    cout<<"First Sorted Linked List: ";
+    display(n1);
+    cout<<"Second Sorted Linked List: ";
+    display(m1);
+    cout<<"Merge Two Sorted Linked List: ";
+    Nodes *newHead=mergeTwoLinkedListRec(n1,m1);
+    display(newHead);
     return 0;
 }
