@@ -1,100 +1,110 @@
 /*
-Note:
-Dynamic Stack
-Stack Is A Linear Data Structure
-Stack Follows LIFO (Last In First Out)
-Stack Is ADT (Abstract Data Structur) : Follows Particular Order
+Stacks Follow LIFO
+Stack Is An Abstract Data Type
 Operations
-1. Push
-2. Pop
-3. Print
-4. isEmpty
-5. Size
-6. Capacity
+    1.PUSH
+    2.POP
+    3.PRINT
+    4.ISEMPTY
+    5.SIZE
+    6.CAPACITY
+    7.TOP
 */
-#include <iostream>
+#include<iostream>
 #include<iomanip>
 using namespace std;
-class stack{
+class Stack{
     private:
-    int *arr;
-    int nextIndex;
-    int capacity;
+        int *arr;
+        int capacity;
+        int nextInd;
     public:
     //Default Constructor
-    stack(){
+    Stack(){
+        arr = new int[4];
         capacity=4;
-        arr=new int[capacity];
-        nextIndex=0;
+        nextInd=0;
     }
-    //Modified Constructor
-    stack(int cap){
-        capacity=cap;
+    
+    //Parametrized Constructor
+    Stack(int capacity){
         arr = new int[capacity];
-        nextIndex=0;
-    }
-    //Return Size
-    int size(){
-        return nextIndex;
-    }
-    int capacityreturn(){
-        return capacity;
+        this->capacity=capacity;
+        nextInd++;
     }
     //Check Stack Is Empty Or Not
     bool isEmpty(){
-        return nextIndex==0;
+        return nextInd==0;
     }
-    //Push Element To The Array
-    void push(int data){
-        if(nextIndex<capacity)
-        {    
-            arr[nextIndex]=data;
-            nextIndex++;
+    //Push Element
+    void push(int ele){
+        if(nextInd<capacity){
+            arr[nextInd]=ele;
+            nextInd++;
         }
-        else
-        {
-            int *newArr = new int[2*capacity];
+        else{
+            int *newArr= new int[2*capacity];
             for(int i=0;i<capacity;i++)
                 newArr[i]=arr[i];
-            delete []arr; //variable arr is stored in stack so it won't get deleted
-            //But The Dynamic Array Which Is Linked To arr will get deleted
-            arr=newArr;
             capacity*=2;
-            arr[nextIndex]=data;
-            nextIndex++;
+            delete []arr;
+            arr=newArr;
+            arr[nextInd]=ele;
+            nextInd++;
         }
     }
-    //Pop Element From The Array
+    //Remove Element
     void pop(){
-        if(isEmpty())
-            cout<<"No Element To Delete"<<endl;
-        else
-            nextIndex--;
-        
+        if(isEmpty()){
+            cout<<"Underflow"<<endl;
+            return;
+        }
+        nextInd--;
     }
-    //Printing Stack Element
+    //Print Last Element
+    int top(){
+        return arr[nextInd-1];
+    }
+
+    //Print Stack
     void print(){
-        for(int i=0;i<nextIndex;i++)
-            cout<<"|"<<setw(5)<<left<<arr[nextIndex-i-1]<<"|"<<endl;
+        for(int i=0;i<nextInd;i++)
+            cout<<"|"<<setw(5)<<left<<arr[nextInd-i-1]<<"|"<<endl;
         cout<<"|-----|"<<"\n\n";
     }
-    
+    //Size Of The Stack
+    int size(){
+        return nextInd;
+    }
+    //Capacity Of The Stack
+    int Capacity(){
+        return capacity;
+    }
+    //Destructor
+    ~Stack(){
+        delete []arr;
+    }
 };
-int main()
-{
-    stack s1(5);
-    s1.push(1);
-    s1.push(2);
-    s1.push(3);
-    s1.push(4);
-    s1.push(5);
+
+int main(){
+    Stack s1;
+    s1.push(10);
+    s1.push(20);
+    s1.push(25);
+    cout<<"Size Of The Stack: "<<s1.size()<<endl;
+    cout<<"Capacity Of The Stack: "<<s1.Capacity()<<endl;
     s1.print();
-    cout<<"Capacity"<<s1.capacityreturn()<<endl<<endl;
-    s1.push(6);
-    s1.print();
-    cout<<"Capacity"<<s1.capacityreturn()<<endl<<endl;
-    s1.push(7);
-    s1.print();
-    cout<<"Capacity"<<s1.capacityreturn()<<endl<<endl;
+    s1.pop();
+    s1.push(22);
+    s1.push(32);
+    s1.push(33);
+    cout<<"Size Of The Stack: "<<s1.size()<<endl;
+    cout<<"Capacity Of The Stack: "<<s1.Capacity()<<endl;
+    s1.pop();
+    s1.pop();
+    s1.pop();
+    s1.pop();
+    s1.pop();
+    s1.pop();
     return 0;
 }
